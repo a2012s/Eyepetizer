@@ -17,6 +17,8 @@
 package com.eyepetizer.android.logic.network
 
 import android.os.Build
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.eyepetizer.android.EyepetizerApplication
 import com.eyepetizer.android.extension.logV
 import com.eyepetizer.android.extension.screenPixel
 import com.eyepetizer.android.logic.network.api.MainPageService
@@ -46,6 +48,7 @@ object ServiceCreator {
     val httpClient = OkHttpClient.Builder()
         .addInterceptor(LoggingInterceptor())
         .addInterceptor(HeaderInterceptor())
+        .addInterceptor(ChuckerInterceptor(EyepetizerApplication.context!!))//通知栏 的 网络请求日志
         .addInterceptor(BasicParamsInterceptor())
         .build()
 

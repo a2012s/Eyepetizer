@@ -30,6 +30,7 @@ import com.eyepetizer.android.util.GlobalUtil
 import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.shuyu.gsyvideoplayer.player.IjkPlayerManager
+import com.tencent.mmkv.MMKV
 import tv.danmaku.ijk.media.player.IjkMediaPlayer
 
 /**
@@ -72,6 +73,11 @@ class EyepetizerApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
+
+        val rootDir = MMKV.initialize(this)
+
+       // HbLogUtil.getInstance().i("mmkv root: $rootDir")
+
         IjkPlayerManager.setLogLevel(if (BuildConfig.DEBUG) IjkMediaPlayer.IJK_LOG_WARN else IjkMediaPlayer.IJK_LOG_SILENT)
         WebViewActivity.DEFAULT_URL.preCreateSession()
         if (!SplashActivity.isFirstEntryApp && DialogAppraiseTipsWorker.isNeedShowDialog) {
