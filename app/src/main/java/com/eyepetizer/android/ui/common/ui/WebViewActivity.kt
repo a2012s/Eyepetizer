@@ -125,7 +125,7 @@ class WebViewActivity : BaseActivity() {
             allowContentAccess = true
             databaseEnabled = true
             domStorageEnabled = true
-            setAppCacheEnabled(true)
+            //setAppCacheEnabled(true)
             savePassword = false
             saveFormData = false
             useWideViewPort = true
